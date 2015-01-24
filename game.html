@@ -1,0 +1,64 @@
+<?php
+
+	var game = $_GET['game'];
+
+?>
+
+<html>
+<head>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		var game = <?php echo game;?>;
+	</script>
+	<script type="text/javascript" src="https://www.moxtra.com/api/js/moxtra-latest.js" id="moxtrajs" data-client-id="ttoqLOCzQWI"></script>
+
+</head>
+<body>
+	<div id = "display" class = "display">
+		<canvas id = "canvas"></canvas>
+	</div>
+	<button>Start Moxtra</button>
+</body>
+
+<script type = "text/javascript">
+	function startChat(){
+	var options = {
+		email: "chui.luke99@gmail.com",
+	    iframe: false,
+	    tagid4iframe: "#chatFrame",
+	    iframewidth: "920px",
+	    iframeheight: "650px",
+	    autostart_meet: false,
+	    autostart_note: false,
+	    start_chat: function(event) {
+	        alert("Chat started session Id: " + event.session_id);
+	    },
+	    start_meet: function(event) {
+	        alert("Meet started session key: " + event.session_key + " session id: " + event.session_id);
+	    },
+	    end_meet: function(event) {
+	        alert("Meet end event");
+	    },
+	    invite_member: function(event) {
+	        alert("Invite member into binder Id: " + event.binder_id);
+	    },
+	    request_note: function(event) {
+	        alert("Note start request");
+	    },
+	    error: function(event) {
+	        alert("Chat error code: " + event.error_code + " error message: " + event.error_message);
+	    }
+	};
+	Moxtra.chat(options);
+}
+</script>
+
+</html>
