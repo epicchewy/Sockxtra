@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>ayy lmao</title>
+	</head>
+	<body style="height: 100%">
+		<canvas id='yolo'></canvas>
+		<script type="text/javascript">
+			var keys = [];
+			var clicks = []; 
+			var s = new WebSocket("ws://localhost:8888");
+			document.addEventListener("contextmenu", function(e){
+    			e.preventDefault();
+			}, false);
+			document.addEventListener('keydown', function(event) {
+    			s.send(JSON.stringify({
+    				"pos" : "down",
+    				"keycode": event.keyCode
+    			}));
+    			/*if(event.keyCode == 37) {
+        			console.log('Left was pressed');
+    			}
+    			else if(event.keyCode == 39) {
+        			console.log('Right was pressed');
+    			}*/
+			});
+			document.addEventListener('keyup', function(event) {
+				s.send(JSON)
+			})
+			window.onmousemove = function(e) {
+				s.send(JSON.stringify({
+					"type" : "move",
+					"screenX": e.screenX,
+					"screenY": e.screenY
+				}));
+				// console.log("{" + e.screenX + "," + e.screenY + "}");
+			}
+			window.onmousedown = function(e) {
+				console.log(e);
+				var pos =  ""; 
+				if(e.which == 1) {
+					pos = "left"
+				} else if (e.which == 2) {
+					pos = "middle"
+				} else {
+					pos = "right" 
+				} 
+				s.send(JSON.stringify({
+					"type" : "click",
+					"position" : pos,
+					"screenX": e.screenX,
+					"screenY": e.screenY
+				}));
+			}
+			
+			console.log("before onopen")
+			s.onopen = function() {
+				console.log("connected to server");
+			}
+			s.onmessage = function(e) {
+				var canvas = document.getElementById("yolo");
+				var ctx = canvas.getContext('2d');
+				var img = new Image();
+				img.src = "data:image/jpg;base64," + e.data;
+				img.onload = function() {
+					ctx.drawImage(img, 0, 0);
+				}
+				//console.log(e.data);
+			}	
+		</script>
+	</body>
+</html>
