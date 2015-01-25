@@ -15,9 +15,11 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-	<script type="text/javascript">
+	<link rel="stylesheet" href="game.css" type="text/css">
+
+	<!--<script type="text/javascript">
 		var game = <?php echo game;?>;
-	</script>
+	</script>-->
 	<script type="text/javascript" src="https://www.moxtra.com/api/js/moxtra-latest.js" id="moxtrajs" data-client-id="ttoqLOCzQWI"></script>
 
 </head>
@@ -32,10 +34,10 @@
 	function startChat(){
 	var options = {
 		email: "chui.luke99@gmail.com",
-	    iframe: false,
+	    iframe: true,
 	    tagid4iframe: "#chatFrame",
-	    iframewidth: "920px",
-	    iframeheight: "650px",
+	    iframewidth: "40%",
+	    iframeheight: "100%",
 	    autostart_meet: false,
 	    autostart_note: false,
 	    start_chat: function(event) {
