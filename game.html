@@ -6,6 +6,9 @@
 
 <html>
 <head>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -23,11 +26,23 @@
 	<script type="text/javascript" src="https://www.moxtra.com/api/js/moxtra-latest.js" id="moxtrajs" data-client-id="ttoqLOCzQWI"></script>
 
 </head>
+
 <body style="background-color:8CC3FA;">
 	<div id = "display" class = "display">
 		<canvas id = "canvas"></canvas>
 	</div>
-	<button onclick = "startChat()">Start Moxtra!</button>
+	<div class="btn-group">
+  <button onclick="starChart()" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Moxtra Options
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Open In Broswer</a></li>
+    <li><a href="#">Open In New Window</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Hide Chat Window</a></li>
+  </ul>
+</div>
 </body>
 
 <script type = "text/javascript">
